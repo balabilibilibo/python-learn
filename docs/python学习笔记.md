@@ -1,4 +1,4 @@
-## 初识 python
+# Python 基础
 
 ```shell
 # 查看 python 版本
@@ -447,5 +447,194 @@ Python 中，类型转换是 Python 的一个重要功能，它可以将一种�
 转换成整数类型
 
 ```python
+# 转换成整数类型
+num = int("123")  
+# 123
+print(num)
 
+# 浮点数转换为整数，取整
+num2 = int(3.14)
+# 3
+print(num2)
+```
+
+转换成浮点数类型
+
+```python
+num3 = float(123)
+# 123.0
+print(num3)
+
+num4 = float("3.14")
+# 3.14
+print(num4)
+```
+
+转换成布尔类型
+在 Python 中，使用 bool() 函数可以将其他类型转换为布尔值，值得注意的是：
+
+- 所有空值都会返回 False，例如：False、None、0、''、空列表、空元祖、空字典、空集合等
+- 所有非空值都会返回 True
+
+```python
+num5 = bool(0)
+# False
+print(num5)
+
+num6 = bool(1)
+# True
+print(num6)
+
+num7 = bool(None)
+# False
+print(num7)
+```
+
+转换成字符串类型
+
+```python
+text = str(123)
+text2 = str(True)
+colors = str(["red", "green", "blue"])
+
+# 123
+print(text)
+
+# True
+print(text2)
+
+# ['red', 'green', 'blue']
+print(colors)
+
+# <class 'str'>
+print(type(text))
+print(type(text2))
+print(type(colors))
+```
+
+转换成列表类型
+
+```python
+sing = "只因你太美"
+colors = ("red", "green", "blue")
+user = {"name": "kunkun", "age": 18, "hobby": ["唱", "跳", "rap", "篮球"]}
+languages = {"C", "C++", "Python", "Java", "JavaScript"}
+
+# ['只', '因', '你', '太', '美']
+print(list(sing))
+
+# ['red', 'green', 'blue']
+print(list(colors))
+
+# 当 list() 的参数是一个字典时，会将这个字典的所有键作为元素组合成一个列表
+# ['name', 'age', 'hobby']
+print(list(user))
+
+# ['C', 'C++', 'Python', 'Java', 'JavaScript']
+print(list(languages))
+
+```
+
+转换成元组类型
+
+```python
+sing = "只因你太美"
+colors = ["red", "green", "blue"]
+user = {"name": "kunkun", "age": 18, "hobby": ["唱", "跳", "rap", "篮球"]}
+languages = {"C", "C++", "Python", "Java", "JavaScript"}
+
+# ('red', 'green', 'blue')
+print(tuple(colors))
+
+# ('只', '因', '你', '太', '美')
+print(tuple(sing))
+
+# 当 tuple() 的参数是一个字典时，会将这个字典的所有键作为元素组合成一个元组
+# ('name', 'age', 'hobby')
+print(tuple(user))
+
+# ('C', 'C++', 'Python', 'Java', 'JavaScript')
+print(tuple(languages))
+```
+
+转换成字典类型
+在 Python 中，使用 dict() 函数可以将一个可迭代对象转换为字典类型。可迭代对象中的每个元素必须是一个包含两个元素的序列，第一个元素作为键，第二个元素作为值。
+
+```python
+info = [("name", "kunkun"), ("age", 18), ("hobby", ["唱", "跳", "rap", "篮球"])]
+
+# {'name': 'kunkun', 'age': 18, 'hobby': ['唱', '跳', 'rap', '篮球']}
+print(dict(info))
+```
+
+转换成集合类型
+
+```python
+sing = "只因你太美"
+colors = ["red", "green", "blue"]
+user = {"name": "kunkun", "age": 18, "hobby": ["唱", "跳", "rap", "篮球"]}
+
+# {'只', '因', '你', '太', '美'}
+print(set(sing))
+
+# {'red', 'green', 'blue'}
+print(set(colors))
+
+# 当 set() 的参数是一个字典时，会将这个字典的所有键作为元素组合成一个集合
+# {'name', 'age', 'hobby'}
+print(set(user))
+```
+
+## 注释
+
+语法：
+
+```python
+# 这是单行注释
+
+"""
+这是多行注释
+这是多行注释
+"""
+```
+
+## 输出语法
+
+print() 是 Python 中的一个内置函数，用于输出数据，print() 函数的参数可以是字符串、数字、布尔值、列表、元组、字典、集合等等，print() 函数的参数可以有多个，多个参数之间用逗号隔开。print() 函数的参数可以有格式化符，格式化符用于格式化输出的数据。
+
+```python
+print(值列表, sep='分割符', end='结束符', file=文件对象, flush=布尔值)
+
+# sep（可选）：用于设置分割符，默认是 “空格”。
+# end（可选）：用于设置结束符，默认是 “\n（换行）”
+# file（可选）：表示输出到哪个文件，默认是标准输出。
+# flush（可选）：表示是否强制刷新缓存区，默认是不刷新。
+```
+
+## 输入语法
+
+input() 是 Python 中的一个内置函数，用于从用户输入数据，input() 函数的参数可以是字符串，字符串中的内容会作为提示信息输出给用户。input() 函数的返回值是一个字符串，字符串中的内容是用户输入的数据。
+
+```python
+text = input("请输入内容：")
+print(text)
+```
+
+## 转义字符
+
+```python
+常用的转义字符有：
+\'：单引号
+\"：双引号
+\n：换行
+\t：制表符
+\r：回车
+\b：退格
+\\：反斜杠
+
+s = "不经历风雨\n怎么见'彩虹'"
+
+# 不经历风雨
+# 怎么见'彩虹'
+print(s)
 ```
