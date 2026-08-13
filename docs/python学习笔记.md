@@ -638,3 +638,52 @@ s = "不经历风雨\n怎么见'彩虹'"
 # 怎么见'彩虹'
 print(s)
 ```
+
+# 流程控制
+
+在 Python 中，流程控制语句有：if 语句、while 语句、for 语句、break 语句、continue 语句、pass 语句。使用缩进的方式来控制代码块
+
+if 语句
+
+```python
+# if 语句
+score = input("请输入分数：")
+score = int(score)
+if score >= 90:
+    print("优秀")
+elif score >= 80:
+    print("良好")
+elif score >= 60:
+    print("及格")
+else:
+    print("不及格")
+
+
+# if 嵌套
+num = int(input("请输入一个数字："))
+if num % 2 == 0:
+    if num % 3 == 0:
+        print("这是一个能够3整除的偶数")
+    else:
+        print("不能被3整除的偶数")
+else:
+    print("奇数")
+```
+
+三元运算符
+语法：
+
+```python
+# 条件表达式
+x if a else b
+
+score = int(input("请输入分数："))
+print("及格" if score >= 60 else "不及格")
+
+a = int(input("请输入第一个数字："))
+b = int(input("请输入第二个数字："))
+result = a - b if a > b else b - a
+print(result)
+```
+
+while循环
