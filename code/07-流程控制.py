@@ -38,4 +38,68 @@ def testTernaryOperator():
     print(result)
 
 
-def testWhile(){}
+def testWhile():
+    # i = 1
+    # total = 0
+    # while i <= 100:
+    #     total += i
+    #     i += 1
+    # print(total)
+
+    # while 循环使用 else 子句
+
+    # 在循环结构中执行了 break 语句或者发生了异常，则不会执行 else 子句
+    i = 0
+    while i < 10:
+        if i == 5:
+            print(i)
+            # break
+        i += 1
+    else:
+        print("循环结束")
+
+
+# for 循环
+# for i in range(start,end,step)
+def testFor():
+    # for i in range(1, 10):
+    #     for j in range(1, i + 1):
+    #         print("{} * {} = {}".format(i, j, i * j), end="\t")
+    #     print()
+
+    # # 设置步长为负数
+    # # 下方的打印结果是：10 9 8 7 6 5 4 3 2 1
+    # for i in range(10, 0, -1):
+    #     print(f"i:{i}")
+
+    # for 循环使用 else 子句
+    # 在循环结构中执行了 break 语句或者发生了异常，则不会执行 else 子句
+    # for i in range(10):
+    #     if i == 5:
+    #         print(i)
+    #         break
+    # else:
+    #     print("循环结束")
+
+    # 遍历字符串
+    str = "hello world"
+    for i in str:
+        print(i)
+
+    # 遍历列表
+    hobby = ["唱", "跳", "rap"]
+    for i in hobby:
+        print(i)
+
+    # 遍历元组
+    languages = ("Python", "C++", "Java", "Go", "Rust")
+    for item in languages:
+        print(item)
+
+    # 遍历字典
+    user = {"name": "kunkun", "age": 100, "hobby": ["唱", "跳", "rap"]}
+    for key, value in user.items():
+        print(key, value)
+
+
+testFor()

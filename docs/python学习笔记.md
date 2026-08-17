@@ -687,3 +687,75 @@ print(result)
 ```
 
 while循环
+
+```python
+i = 1
+total = 0
+while i <= 100:
+    total += i
+    i += 1
+print(total)
+
+# while 循环使用 else 子句
+# 在循环结构中执行了 break 语句或者发生了异常，则不会执行 else 子句
+i = 0
+while i < 10:
+    if i == 5:
+        print(i)
+        # break
+    i += 1
+else:
+    print("循环结束")
+```
+
+for 循环
+
+```python
+# for i in range(start,end,step)
+# strt:起始值 end:结束值 step:步长
+# 不管 range() 的参数形式是怎样的，结束值都不会被包含进去
+for i in range(1, 10):
+    for j in range(1, i + 1):
+        print("{} * {} = {}".format(i, j, i * j), end="\t")
+    print()
+
+
+# 设置步长为负数
+# 下方的打印结果是：10 9 8 7 6 5 4 3 2 1
+for i in range(10, 0, -1):
+    print(f"i:{i}")
+
+
+# for 循环使用 else 子句
+# 在循环结构中执行了 break 语句或者发生了异常，则不会执行 else 子句
+for i in range(10):
+    if i == 5:
+        print(i)
+        break
+else:
+    print("循环结束")
+```
+
+for 循环遍历可迭代对象：字符串、列表、元组、字典
+
+```python
+# 遍历字符串
+str = "hello world"
+for i in str:
+    print(i)
+
+# 遍历列表
+hobby = ["唱", "跳", "rap"]
+for i in hobby:
+    print(i)
+
+# 遍历元组
+languages = ("Python", "C++", "Java", "Go", "Rust")
+for item in languages:
+    print(item)
+
+# 遍历字典
+user = {"name": "kunkun", "age": 100, "hobby": ["唱", "跳", "rap"]}
+for key, value in user.items():
+    print(key, value)
+```
