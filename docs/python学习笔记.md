@@ -755,7 +755,59 @@ for item in languages:
     print(item)
 
 # 遍历字典
-user = {"name": "kunkun", "age": 100, "hobby": ["唱", "跳", "rap"]}
+user = {"name": "kunkun", "age": 18, "hobby": ["唱", "跳", "rap"]}
 for key, value in user.items():
     print(key, value)
+```
+
+break 语句
+break 语句用于跳出当前循环，并继续执行下一行代码,break 语句只能用于循环结构中(while、for)
+
+```python
+while True:
+    username = input("请输入用户名：")
+    if username == "kunkun":
+        print(f"大家好，我是 {username}，我是练习时长两年半的练习生")
+        break
+    else:
+        print("用户名错误")
+
+
+# 输出结果是：0 1 2 3 4
+for i in range(10):
+    if i == 5:
+        break
+    print(i)
+```
+
+continue 语句
+continue 语句用于跳过当前循环的剩余部分，并继续执行下一次循环，continue 语句只能用于循环结构中(while、for)
+
+```python
+# 以下输出结果是：1 2 3 4 6 7 8 9 10
+i = 0
+while i < 10:
+    i += 1
+    if i == 5:
+        continue
+    else:
+        print(i)
+
+# 以下输出结果是：0 1 2 3 4 6 7 8 9
+for i in range(10):
+    if i == 5:
+        continue
+    print(i)
+```
+
+pass 语句
+pass 语句用于占位，代表一个空的代码块，pass 语句不会执行任何操作
+
+```python
+for i in range(10):
+    if i % 2 == 0:
+        print(i)
+    else:
+        # pass 在这里是一个空代码快，如果将 pass 删除，程序会报错
+        pass
 ```
