@@ -811,3 +811,410 @@ for i in range(10):
         # pass 在这里是一个空代码快，如果将 pass 删除，程序会报错
         pass
 ```
+
+# 列表
+
+## 列表添加元素
+
+- insert() 在列表的任意位置插入新元素
+- append() 在列表的末尾添加元素
+
+```python
+languages = ["Python", "C++", "Java", "Go", "Rust"]
+
+# 在下标为 0 的位置插入 C语言
+languages.insert(0, "C")
+
+# 在列表末尾添加新元素
+languages.append("JavaScript")
+
+# ['C', 'Python', 'C++', 'Java', 'Go', 'Rust', 'JavaScript']
+print(languages)
+
+# 列表的长度：7
+print(len(languages))
+```
+
+## 列表删除元素
+
+- del 关键字：del list[index]
+- pop() 方法： 删除列表中指定的元素，默认最后一个元素，并返回被删除的元素
+- remove() 方法：删除列表中指定的元素，根据值来删除元素的，列表中如果存在多个相同的元素，则只会删除第一个匹配的元素
+
+```python
+languages = ["C", "Python", "C++", "Java", "Go", "Rust", "JavaScript"]
+
+del languages[0]
+
+# ['Python', 'C++', 'Java', 'Go', 'Rust', 'JavaScript']
+print(languages)
+
+# JavaScript
+print(languages.pop())
+
+# ['Python', 'C++', 'Java', 'Go', 'Rust']
+print(languages)
+
+# Java
+print(languages.pop(2))
+
+# ['Python', 'C++', 'Go', 'Rust']
+print(languages)
+
+languages.remove("Rust")
+
+# ['Python', 'C++', 'Go']
+print(languages)
+
+# ['Python', 'C++', 'Go', 'Python']
+languages.append("Python")
+
+languages.remove("Python")
+
+# ['C++', 'Go', 'Python']
+print(languages)
+```
+
+## 修改列表元素
+
+```python
+hobbys = ["唱","跳","rap"]
+
+hobbys[2] = "篮球"
+
+# ["唱", "跳", "篮球"]
+print(hobbys)
+
+# 给一个不存在的位置赋值会报错，以下代码会报错
+# hobbys[3] = "篮球"
+```
+
+## 清空列表
+
+- clear() 方法：清空列表中的所有元素
+- del 关键字：del list[:]
+- 列表乘法：list *= 0
+- 给列表重新赋值：list[:] = []
+
+```python
+users = ["admin", "kunkun", "wuxidixi"]
+
+del users[:]
+
+users.clear()
+
+users *= 0
+
+# 给列表中的每一个元素都分配一个空值，以达到清空列表的目的
+users[:] = []
+
+# []
+print(users)
+```
+
+## 合并列表
+
+- 使用 + 运算符: `list = list1 + list2`
+- 使用 extend() 方法: `list1.extend(list2)`
+- 使用解包: `list = [*list1,*list2, *list3]`
+
+```python
+nums1 = [1, 2, 3, 4, 5]
+nums2 = [6, 7, 8, 9, 10]
+nums = nums1 + nums2
+
+# [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+print(nums)
+
+
+# extend() 方法会修改原列表
+nums1.extend(nums2)
+
+# [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+print(nums1)
+
+# 使用解包合并列表, * 表示解包
+languages1 = ["C", "Python", "C++", "Java", "Go", "Rust", "JavaScript"]
+languages2 = ["C#", "Swift", "Kotlin"]
+languages3 = ["Dart", "Flutter"]
+languages = [*languages1, *languages2, *languages3]
+
+# ['C', 'Python', 'C++', 'Java', 'Go', 'Rust', 'JavaScript', 'C#', 'Swift', 'Kotlin', 'Dart', 'Flutter']
+print(languages)
+```
+
+## 复制列表
+
+- 使用切片: list = list2[:]
+- 使用 list() 方法: list = list()
+- 使用 copy() 方法: list = list.copy()
+- 使用 copy.copy() 方法: list = copy.copy(list2)
+- 使用 copy.deepcopy() 方法: list = copy.deepcopy(list2)
+
+```python
+import copy
+
+colors = ["red", "green", "blue"]
+
+# 使用切片复制(浅拷贝)
+result = colors[:]
+
+# 使用 list() 方法(浅拷贝)
+result = list(colors)
+
+# 使用乘法运算符(浅拷贝)
+result = colors * 1
+
+# 使用列表的 coppy() 方法(浅拷贝)
+result = colors.copy()
+
+# 使用 copy.copy() 方法(浅拷贝)
+result = copy.copy(colors)
+
+# 使用 copy.deepcopy() 方法(深拷贝)
+result = copy.deepcopy(colors)
+
+# ['red', 'green', 'blue']
+print(result)
+```
+
+浅拷贝与深拷贝
+上述前 4 种都属于浅拷贝
+
+浅拷贝:如果是值类型，那么会复制它的值；如果是引用类型，则会复制它的引用
+
+深拷贝:不管是值类型还是引用类型，都只是复制它的值
+
+```python
+# 浅拷贝
+nums = [1, 2, 3, [4, 5, 6]]
+result = copy.copy(nums)
+result[3].append(7)
+
+# [1, 2, 3, [4, 5, 6, 7]]
+print(nums)
+# [1, 2, 3, [4, 5, 6, 7]]
+print(result)
+
+# 深拷贝
+nums = [1, 2, 3, [4, 5, 6]]
+result = copy.deepcopy(nums)
+result[3].append(7)
+
+# [1, 2, 3, [4, 5, 6]]
+print(nums)
+# [1, 2, 3, [4, 5, 6, 7]]
+print(result)
+```
+
+## 遍历列表
+
+- for 循环
+- while 循环
+- enumerate() 方法:是 Python 一个内置的函数,它接受一个列表作为参数,然后返回一个由元组组成的迭代器,每个元组包含 2 个元素,第一个元素是索引,第二个元素是列表中的元素
+
+```python
+languages = ["C", "Python", "C++", "Java", "Go", "Rust", "JavaScript"]
+# for 循环遍历列表
+for language in languages:
+    print(language)
+
+
+for i in range(len(languages)):
+    print(languages[i])
+
+# while 循环遍历列表
+i = 0
+while i < len(languages):
+    language = languages[i]
+    print(language)
+    i += 1
+
+
+while languages:
+    language = languages.pop()
+    print(language)
+
+
+# enumerate() 方法遍历列表
+# enumerate() 是 Python 一个内置的函数,它接受一个列表作为参数,然后返回一个由元组组成的迭代器,每个元组包含 2 个元素,第一个元素是索引,第二个元素是列表中的元素
+for index, language in enumerate(languages):
+    print(index, language)
+```
+
+## 列表切片
+
+`list[start:end:step]`
+
+- start: 起始索引，默认为 0
+- end: 结束索引，默认认为列表末尾的索引
+- step: 步长，默认认为 1
+
+注意事项:
+
+- 索引范围：start <= index < end
+- end 省略时,获取的范围是: start 到列表末尾
+- start 省略时，获取的范围是: 0 到 end
+- start 和 end 都省略时，获取的范围是: 整个列表
+- start 与 end 可以是负数,不过 end 必须大于 start
+- 步长省略时，默认认为 1
+
+```python
+languages = ["C", "Python", "C++", "Java", "Go", "Rust", "JavaScript"]
+
+# ['C', 'Python', 'C++']
+print(languages[0:3])
+
+# ['C', 'Python', 'C++', 'Java', 'Go', 'Rust', 'JavaScript']
+print(languages[0:])
+
+# ['C', 'Python', 'C++']
+print(languages[:3])
+
+["C", "C++", "Go", "JavaScript"]
+print(languages[::2])
+
+# ['JavaScript', 'Rust', 'Go', 'Java', 'C++', 'Python', 'C']
+print(languages[::-1])
+
+# ['Go', 'Rust']
+print(languages[-3:-1])
+```
+
+## 列表去重
+
+- 使用循环 + 判断
+- 使用 set() 函数:list(set(list2))
+- 使用 dict.fromkeys() 函数:list(dict.fromkeys(list2))
+
+```python
+colors = ["red", "green", "blue", "pink", "red", "yellow", "blue"]
+
+# 使用循环 + 判断
+result = []
+for color in colors:
+    if color not in result:
+        result.append(color)
+
+# ['red', 'green', 'blue', 'pink', 'yellow']
+print(result)
+
+
+# 使用 set()
+result = list(set(colors))
+# ['yellow', 'blue', 'pink', 'red', 'green']
+print(result)
+
+
+# 使用 dict.fromkeys(),会保留列表元素原有的顺序
+result = list(dict.fromkeys(colors))
+# ['red', 'green', 'blue', 'pink', 'yellow']
+print(result)
+```
+
+## 列表排序
+
+- 使用 sort() 方法: list.sort(key?,reverse=False或True)
+  - key 参数用于指定一个函数,用于获取列表元素的排序关键字
+  - reverse 参数用于指定排序顺序,True 为降序,False 为升序
+  - sort() 会改变原列表
+- 使用 sorted() 函数: sorted(iterable, key?, reverse=False)
+  - iterable 参数用于指定一个可迭代对象
+  - key 用于排序比较的函数
+  - reverse 用于指定排序顺序,True 为降序,False 为升序
+  - sorted() 会返回一个新的列表,不会改变原列表
+
+```python
+# 使用 sort() 方法
+nums = [3, 2, 1, 4, 5, 6, 7, 8, 9]
+
+# 默认升序
+nums.sort()
+# 等价于 nums.sort(reverse=False)
+
+[1, 2, 3, 4, 5, 6, 7, 8, 9]
+print(nums)
+
+# 降序
+nums.sort(reverse=True)
+
+# [9, 8, 7, 6, 5, 4, 3, 2, 1]
+print(nums)
+
+
+users = [
+    {"name": "kunkun", "age": 18},
+    {"name": "wuxidixi", "age": 19},
+    {"name": "xiaoming", "age": 17},
+]
+
+# key=lambda user: user["age"]
+# lambda user: user["age"]：匿名函数
+# 参数 user：代表 users 列表里的每一个字典对象
+# 返回值：取字典的 age 字段的值，作为排序依据
+users.sort(key=lambda user: user["age"])
+
+# [{'name': 'xiaoming', 'age': 17}, {'name': 'kunkun', 'age': 18}, {'name': 'wuxidixi', 'age': 19}]
+print(users)
+
+# 使用内置的 sorted() 方法
+nums = [3, 2, 1, 4, 5, 6, 7, 8, 9]
+
+# 默认升序
+result = sorted(nums)
+# 等价于 sorted(nums, reverse=False)
+
+# [1, 2, 3, 4, 5, 6, 7, 8, 9]
+print(result)
+
+
+# 降序
+result = sorted(nums, reverse=True)
+
+# [9, 8, 7, 6, 5, 4, 3, 2, 1]
+print(result)
+
+
+users = [
+    {"name": "kunkun", "age": 18},
+    {"name": "wuxidixi", "age": 19},
+    {"name": "xiaoming", "age": 17},
+]
+
+result = sorted(users, key=lambda user: user["age"])
+
+# [{'name': 'xiaoming', 'age': 17}, {'name': 'kunkun', 'age': 18}, {'name': 'wuxidixi', 'age': 19}]
+print(result)
+```
+
+## 列表推导式
+
+列表推导式是一种创建列表的语法糖,它和 for 循环一样,但是语法更简洁,并且性能更高
+语法: 列表名 = [表达式 for 变量 in 迭代对象]
+
+```python
+nums = [i * 2 for i in range(1, 6)]
+
+# [2, 4, 6, 8, 10]
+print(nums)
+
+users = ["iaoming", "kunkun", "wuxidixi"]
+result = [i.upper() for i in users]
+
+# ['IAOMING', 'KUNKUN', 'WUXIDIXI']
+print(result)
+
+# 加上判断条件,需要将判断条件写 for 循环在后面
+nums = [2, 4, 5, 6, 7, 1]
+result = [i for i in nums if i % 2 == 0]
+
+# [2, 4, 6]
+print(result)
+
+# 使用 if-else 语句,需要放在 for 循环前面
+nums = [2, 4, 5, 6, 7, 1]
+result = [i if i % 2 == 0 else i * 2 for i in nums]
+
+# [2, 4, 10, 6, 14, 2]
+print(result)
+```
