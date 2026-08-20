@@ -1218,3 +1218,7 @@ result = [i if i % 2 == 0 else i * 2 for i in nums]
 # [2, 4, 10, 6, 14, 2]
 print(result)
 ```
+
+# 元组
+
+元组的元素是不能进行修改的
