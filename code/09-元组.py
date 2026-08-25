@@ -23,4 +23,10 @@ print(count)
 userInfo = ("kunkun", 18, ["唱", "跳", "rap", "篮球"])
 
 name, age, hobbys = userInfo
+
+# kunkun 18 ['唱', '跳', 'rap', '篮球']
 print(name, age, hobbys)
+
+
+# 访问元组
+# 元组通过下标的方式来访问元组中的元素
